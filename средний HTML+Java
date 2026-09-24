@@ -1,0 +1,69 @@
+<form id="registerForm">
+  <label>
+    Логин:
+    <input id="login" type="text" placeholder="Введите логин">
+  </label><br>
+
+  <label>
+    E-mail:
+    <input id="email" type="email" placeholder="Введите e-mail">
+  </label><br>
+
+  <label>
+    Пароль:
+    <input id="password" type="password" placeholder="Введите пароль">
+  </label><br>
+
+  <label>
+    Повтор пароля:
+    <input id="passwordRepeat" type="password" placeholder="Повторите пароль">
+  </label><br>
+
+  <button type="submit">Зарегистрироваться</button>
+</form>
+
+<p id="message"></p>
+
+<script>
+document.getElementById("registerForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const login = document.getElementById("login").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+  const passwordRepeat = document.getElementById("passwordRepeat").value;
+  const message = document.getElementById("message");
+
+  if (login === "") {
+    message.textContent = "Введите логин";
+    return;
+  }
+
+  if (email === "") {
+    message.textContent = "Введите e-mail";
+    return;
+  }
+
+  if (password === "") {
+    message.textContent = "Введите пароль";
+    return;
+  }
+
+  if (password.length < 8) {
+    message.textContent = "Пароль должен содержать не менее 8 символов";
+    return;
+  }
+
+  if (passwordRepeat === "") {
+    message.textContent = "Повторите пароль";
+    return;
+  }
+
+  if (password !== passwordRepeat) {
+    message.textContent = "Пароли не совпадают";
+    return;
+  }
+
+  message.textContent = "Регистрация успешно выполнена!";
+});
+</script>
