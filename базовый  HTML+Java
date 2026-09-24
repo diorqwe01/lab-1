@@ -1,0 +1,62 @@
+<form id="studentForm">
+  <label>ФИО:
+    <input id="name" type="text" placeholder="Введите ФИО">
+  </label><br>
+
+  <label>E-mail:
+    <input id="email" type="email" placeholder="Введите e-mail">
+  </label><br>
+
+  <label>Курс:
+    <select id="course">
+      <option value="">Выберите курс</option>
+      <option value="1">1 курс</option>
+      <option value="2">2 курс</option>
+      <option value="3">3 курс</option>
+      <option value="4">4 курс</option>
+    </select>
+  </label><br>
+
+  <label>
+    <input id="agree" type="checkbox">
+    Согласен с правилами
+  </label><br>
+
+  <button type="submit">Зарегистрироваться</button>
+</form>
+
+<p id="message"></p>
+
+<script>
+document.getElementById("studentForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const course = document.getElementById("course").value;
+  const agree = document.getElementById("agree").checked;
+  const message = document.getElementById("message");
+
+  if (name === "") {
+    message.textContent = "Введите ФИО";
+    return;
+  }
+
+  if (email === "") {
+    message.textContent = "Введите e-mail";
+    return;
+  }
+
+  if (course === "") {
+    message.textContent = "Выберите курс";
+    return;
+  }
+
+  if (!agree) {
+    message.textContent = "Подтвердите согласие с правилами";
+    return;
+  }
+
+  message.textContent = "Регистрация успешно выполнена!";
+});
+</script>
